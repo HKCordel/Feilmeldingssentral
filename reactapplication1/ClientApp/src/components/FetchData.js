@@ -19,10 +19,10 @@ export class FetchData extends Component {
       <table className='table'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Kunde</th>
+            <th>Produkt</th>
+            <th>Stacktrace</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@ export class FetchData extends Component {
 
     return (
       <div>
-        <h1>Weather forecast</h1>
+        <h1>Feilmelding sentral testdata </h1>
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
       </div>

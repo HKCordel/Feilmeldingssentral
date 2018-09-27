@@ -5,6 +5,7 @@ export class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: '',
             email: '',
             password: ''
         }
@@ -14,6 +15,14 @@ export class Register extends Component {
             <div className="form-inline" style={{ margin: '5%' }}>
                 <h2>Sign up</h2>
                 <div className="form-group">
+                    <input
+
+                        className="form-control"
+                        type="text"
+                        style={{ marginRight: '5px' }}
+                        placeholder="name"
+                        onChange={event => this.setState({ name: event.target.value })}
+                    />
                     <input
 
                         className="form-control"
@@ -33,7 +42,7 @@ export class Register extends Component {
                         className="btn btn-primary"
                         type="button"
                     >
-                        Register
+                        Registrer
                         </button>
                 </div>
             </div>

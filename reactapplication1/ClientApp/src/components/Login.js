@@ -11,7 +11,7 @@ export class Login extends Component {
     render() {
         return (
             <div className="form-inline">
-                <h2>Sign up</h2>
+                <h2>Innlogging</h2>
                 <div className="form-group">
                     <input
 
@@ -30,7 +30,7 @@ export class Login extends Component {
                         className="btn btn-primary"
                         type="button"
                     >
-                        Register
+                        Logg inn
                         </button>
                 </div>
             </div>
