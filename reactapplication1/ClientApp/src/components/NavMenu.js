@@ -38,6 +38,17 @@ export class NavMenu extends Component {
                             <Glyphicon glyph='th-list' /> Login
               </NavItem>
                     </LinkContainer>
+                                        
+                <LinkContainer to={'/Register'}>
+                    <NavItem>
+                        <Glyphicon glyph='th-list' /> Register
+              </NavItem>
+                    </LinkContainer>
+                    <LinkContainer to={'/Swagger'}>
+                        <NavItem>
+                            <Glyphicon glyph='th-list' /> Swaggertest
+              </NavItem>
+                    </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

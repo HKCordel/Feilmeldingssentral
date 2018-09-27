@@ -28,7 +28,15 @@
     <None Remove="ClientApp\src\components\Class.cs" />
     <None Remove="ClientApp\src\components\JavaScript.js" />
     <None Remove="ClientApp\src\components\JavaScript.js" />
+    <None Remove="ClientApp\src\components\jsx.jsx" />
+    <None Remove="ClientApp\src\components\jsx.jsx" />
+    <None Remove="ClientApp\src\components\Register.jsx" />
+    <None Remove="ClientApp\src\components\Register.jsx" />
+    <None Remove="ClientApp\src\CustomLayoutjs.js" />
+    <None Remove="ClientApp\src\CustomLayoutjs.js" />
     <None Remove="ClientApp\src\index.ts" />
+    <None Remove="ClientApp\src\StyleSheet.css" />
+    <None Remove="ClientApp\src\StyleSheet.css" />
   </ItemGroup>
 
   <ItemGroup>
