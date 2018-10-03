@@ -7,7 +7,7 @@ export class FetchData extends Component {
     super(props);
     this.state = { forecasts: [], loading: true };
 
-    fetch('api/SampleData/WeatherForecasts')
+      fetch('http://info.systemkonsult.no:3000/product_build')
       .then(response => response.json())
       .then(data => {
         this.setState({ forecasts: data, loading: false });
@@ -19,18 +19,18 @@ export class FetchData extends Component {
       <table className='table'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Version</th>
             <th>Summary</th>
           </tr>
         </thead>
         <tbody>
           {forecasts.map(forecast =>
-            <tr key={forecast.dateFormatted}>
-              <td>{forecast.dateFormatted}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
+            <tr key={forecast.id}>
+              <td>{forecast.name}</td>
+              <td>{forecast.version}</td>
+              <td>{forecast.rev}</td>
               <td>{forecast.summary}</td>
             </tr>
           )}
@@ -46,7 +46,7 @@ export class FetchData extends Component {
 
     return (
       <div>
-        <h1>Weather forecast</h1>
+        <h1>Product test data</h1>
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
       </div>
