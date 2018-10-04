@@ -11,20 +11,20 @@ export class Login extends Component {
     render() {
         return (
             <div className="form-inline">
-                <h2>Innlogging</h2>
+                <h2>Sign in</h2>
                 <div className="form-group">
                     <input
 
                         className="form-control"
                         type="text"
                         placeholder="email"
-                        onChange={event => this.setState({ email: event.target.value })}
+                        onChange={item => this.setState({ email: item.email })}
                     />
                     <input
                             className="form-control"
                             type="password"
-                            placeholder="pasword"
-                            onChange={event => this.setState({ password: event.target.value })}
+                        placeholder="pasword"
+                        onChange={item => this.setState({ password: item.password })}
                     />
                     <button
                         className="btn btn-primary"
