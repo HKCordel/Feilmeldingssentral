@@ -20,7 +20,7 @@ export class NavMenu extends Component {
           <Nav>
             <LinkContainer to={'/'} exact>
               <NavItem>
-                <Glyphicon glyph='home' /> Home
+                <Glyphicon glyph='home' /> Dashboard
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/counter'}>
@@ -30,7 +30,7 @@ export class NavMenu extends Component {
             </LinkContainer>
             <LinkContainer to={'/fetchdata'}>
               <NavItem>
-                <Glyphicon glyph='th-list' /> Fetch data
+                <Glyphicon glyph='th-list' /> Oversikt
               </NavItem>
                     </LinkContainer>
                     <LinkContainer to={'/login'}>
