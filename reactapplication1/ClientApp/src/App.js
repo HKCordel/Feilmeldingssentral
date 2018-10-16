@@ -6,7 +6,8 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
-import {SwaggerTest} from './components/SwaggerTest';
+import { SwaggerTest } from './components/SwaggerTest';
+
 
 
 
@@ -20,16 +21,17 @@ export default class App extends Component {
 
     render() {
 
-      
-    
-    return (
-        <Layout>
+
+        return (
+     
+            <Layout>
+
         <Route exact path='/' component={Home} />
         <Route path='/counter' component={Counter} />
             <Route path='/fetchdata' component={FetchData} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
-           <Route path='/SwaggerTest' component={SwaggerTest} />
+           <Route path='/Swagger' component={SwaggerTest} />
       </Layout>
     );
     }

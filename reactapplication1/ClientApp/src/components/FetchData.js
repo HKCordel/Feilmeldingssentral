@@ -10,7 +10,7 @@ export class FetchData extends Component {
       fetch('http://192.168.2.8:3000/viewAllErrors')
       .then(response => response.json())
       .then(data => {
-        this.setState({ items : data, loading: false });
+         this.setState({ items : data, loading: false });
       });
   }
 
@@ -22,8 +22,8 @@ export class FetchData extends Component {
             <th>Kunde</th>
             <th>Produkt</th>
             <th>Version</th>
-                    <th>Stacktrace</th>
-                    <th>Id</th>
+            <th>Stacktrace</th>
+            <th>Id</th>
           </tr>
         </thead>
         <tbody>

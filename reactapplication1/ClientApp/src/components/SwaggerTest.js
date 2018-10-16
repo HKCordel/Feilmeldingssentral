@@ -1,61 +1,63 @@
 ﻿import React, { Component } from 'react';
-
-import CustomLayout from './CustomLayout'
-import './App.css';
-import 'swagger-ui/dist/swagger-ui.css';
-
-
-
-
+import axios from 'axios';
 
 export class SwaggerTest extends Component {
+    displayName = SwaggerTest.name
+
     constructor(props) {
         super(props);
+        this.onChangeHostName = this.onChangeHostName.bind(this);
+        this.onChangePort = this.onChangePort.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+
         this.state = {
-            items: [],
-            isLoaded: false,
+            name: '',
+            port: ''
         }
     }
-    componentDidMount() {
-        fetch('http://info.systemkonsult.no:3000/user_table')
-            .then(res => res.json())
-            .then(json => {
-                this.setState({
-                    isLoaded: true,
-                    items: json,
-                })
-            });
+    onChangeHostName(e) {
+        this.setState({
+            name: e.target.value
+        });
     }
+    onChangePort(e) {
+        this.setState({
+            port: e.target.value
+        });
+    }
+    onSubmit(e) {
+        e.preventDefault();
+        const serverport = {
+            name: this.state.name,
+            port: this.state.port
+        }
+        axios.post(' http://192.168.2.8:3000/user_table/', serverport)
+            .then(res => console.log(res.data));
 
+        this.setState({
+            name: '',
+            port: ''
+        });
+    }
 
     render() {
-
-        var { isLoaded, items } = this.state;
-
-        if (!isLoaded) {
-            return <div> Wrong password</div>;
-        }
-        else {
-            return (
-                <div className="app">
-
-                    <ul>
-                        {items.map(item => (
-                            <li key={item.id}>
-
-                                Username: {item.user_username} ||
-                                email: {item.email} ||
-                               Id: {item.id}
-                            </li>
-
-                        ))};
-                        </ul>
-
-
-                </div>
-            );
-
-        }
+        return (
+            <div style={{ marginTop: 50 }}>
+                <h3>Add New Server</h3>
+                <form>
+                    <div className="form-group">
+                        <label>Add Host Name:  </label>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <label>Add Server Port: </label>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Add Node server" className="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        )
     }
 }
-
