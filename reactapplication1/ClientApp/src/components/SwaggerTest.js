@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 export class SwaggerTest extends Component {
     displayName = SwaggerTest.name
@@ -31,7 +31,7 @@ export class SwaggerTest extends Component {
             name: this.state.name,
             port: this.state.port
         }
-        axios.post(' http://192.168.2.8:3000/user_table/', serverport)
+        // axios.post(' http://192.168.2.8:3000/user_table/', serverport)
             .then(res => console.log(res.data));
 
         this.setState({

@@ -1,74 +1,57 @@
-﻿import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { PostData } from './PostData';
+﻿import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { Link } from "react-router-dom";
+
 
 export class Login extends Component {
-    displayName = Login.name
-    constructor(props) {
-        super(props);
-        this.state = {
-            email:'',
-            password:'',
-            redirect: false
-        }
-        this.handleLogin = this.handleLogin.bind(this);
-        this.onChange = this.onChange.bind(this);
-    }
-    handleLogin() {
-        if (this.state.email && this.state.password) {
-            PostData('handleLogin', this.state).then((result) => {
-                let responseJSON = result;
-                if (responseJSON.userData) {
-                    sessionStorage.setItem('userData', responseJSON);
-                    this.setState({ redirect: true });
-                }
-                else {
-                    console.log("Login error");
-                }
-            });
 
-        }
- 
-        
+    state = {
+        username: "",
+        password: "",
     }
-    onChange(e) {
-      
-        this.setState({ [e.target.name]: e.target.value });
+
+    onSubmit = e => {
+        e.preventDefault();
+        console.error("Not implemented!!1");
     }
 
     render() {
-
-        if (this.state.redirect) {
-            return (<Redirect to={'/Register'}/>)
-        }
         return (
-            <div className="form-inline">
-                <h2>Login Page</h2>
-                <div className="form-group">
-                    <input
+            <form onSubmit={this.onSubmit}>
+                <fieldset>
+                    <legend>Login</legend>
+                    <p>
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text" id="username"
+                            onChange={e => this.setState({ username: e.target.value })} />
+                    </p>
+                    <p>
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password" id="password"
+                            onChange={e => this.setState({ password: e.target.value })} />
+                    </p>
+                    <p>
+                        <button type="submit">Login</button>
+                    </p>
 
-                        className="form-control"
-                        type="text"
-                        placeholder="email"
-                        onChange={this.onChange}
-                    />
-                    <input
-                            className="form-control"
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                        onChange={this.onChange}
-                    />
-                    <button
-                        className="btn btn-primary"
-                        value="Login"
-                        type="button"
-                        onClick={this.handleLogin}
-                    >
-                        Logg inn
-                        </button>
-                </div>
-            </div>
-            )
-            }
+                    <p>
+                        Don't have an account? <Link to="/register">Register</Link>
+                    </p>
+                </fieldset>
+            </form>
+        )
     }
+}
+
+const mapStateToProps = state => {
+    return {};
+}
+
+const mapDispatchToProps = dispatch => {
+    return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

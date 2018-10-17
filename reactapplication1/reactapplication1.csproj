@@ -16,23 +16,19 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\components\login\**" />
     <Compile Remove="ClientApp\src\components\NewFolder1\**" />
-    <Compile Remove="ClientApp\src\components\NewFolder\**" />
-    <Compile Remove="ClientApp\src\NewFolder\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\components\login\**" />
     <Content Remove="ClientApp\src\components\NewFolder1\**" />
-    <Content Remove="ClientApp\src\components\NewFolder\**" />
-    <Content Remove="ClientApp\src\NewFolder\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\src\components\login\**" />
     <EmbeddedResource Remove="ClientApp\src\components\NewFolder1\**" />
-    <EmbeddedResource Remove="ClientApp\src\components\NewFolder\**" />
-    <EmbeddedResource Remove="ClientApp\src\NewFolder\**" />
+    <None Remove="ClientApp\src\components\login\**" />
     <None Remove="ClientApp\src\components\NewFolder1\**" />
-    <None Remove="ClientApp\src\components\NewFolder\**" />
-    <None Remove="ClientApp\src\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,10 +50,6 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\index.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\components\login\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
