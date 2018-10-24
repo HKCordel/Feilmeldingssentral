@@ -35,7 +35,7 @@ export class Login extends Component {
                             onChange={e => this.setState({ password: e.target.value })} />
                     </p>
                     <p>
-                        <button type="submit">Login</button>
+                            <button className="btn btn-primary" type="submit">Login</button>
                     </p>
 
                     <p>

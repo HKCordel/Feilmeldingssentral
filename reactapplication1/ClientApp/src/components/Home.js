@@ -1,67 +1,111 @@
 import React, { Component } from 'react';
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 
 export class Home extends Component {
     displayName = Home.name
 
     constructor(props) {
         super(props);
-        this.state = { users: [], loading: true, search: "" };
-
-
-        fetch('http://192.168.2.8:3000/user_table')
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ users: data, loading: false });
-            });
-
-
+        this.state = { users: [], loading: true};
     }
-    static renderUsersTable(users) {
-        
-        return (
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>User level</th>
-                        <th>Id</th>
-                        <th>Password</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(user =>
-                        <tr key={user.id}>
-                            <td>{user.user_username}</td>
-                            <td>{user.email}</td>
-                            <td>{user.user_level}</td>
-                            <td>{user.id}</td>
-                            <td>{user.user_password}</td>
+        componentDidMount(){
 
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-        );
-     
-    }
-
-    onChange = e => {
-        this.setState({ search: e.target.value });
-    }
-
+            const url = "http://192.168.2.8:3000";
+            fetch(url + '/user_table', {
+                method: "GET"
+            }).then(response => response.json())
+                .then(data => {
+                    this.setState({ users: data, loading: false });
+                });
+        }
+    
+    
 
     render() {
-        let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
-            : Home.renderUsersTable(this.state.users);
-
-        return (
-            <div>
-                <input label="Search.." onChange={this.onChange} />
-                <h1>Administrator dashboard </h1>
+    
+  
+        const columns = [
+            {
+                Header: "User ID",
+                accessor: "id",
+                filterable: true,
+                style:{
+                    textAlign: "right"
+                },
+                      width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
+       
+            {
+                Header: "Username",
+                accessor: "user_username",
+                sortable: false,
+                style: {
+                    textAlign: "right"
+                }
+            
+            },
+            {
+                Header: "Email",
+                accessor: "email",
+                sortable: false,
                 
-                {contents}
+            style: {
+                textAlign: "right"
+            }
+            },
+            {
+                Header: "User level",
+                accessor: "user_level",
+                filterable: false,
+                style: {
+                    textAlign: "right"
+                },
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
+            {
+                Header: "Password",
+                accessor: "user_password",
+                sortable: false,
+                filterable: false,
+                style: {
+                    textAlign: "right"
+                }
+            },
+            {
+                Header: "Actions",
+                Cell: props => {
+                    return (
+                        <button style={{ backgroundColor: "red", color: "#fefefe" }}>Change</button>
+                    )
+                },
+                sortable: false,
+                filterable: false,
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+                
+            }
+        ]
+        return (
+           
+            <div>
+                <h1>Administrator dashboard </h1>
+                <ReactTable
+                    columns={columns}
+                    data={this.state.users}
+                    filterable
+                    noDataText={"No users found"}
+                    
+                >
+                </ReactTable>
+           
+                
+         
             </div>
         );
     }
