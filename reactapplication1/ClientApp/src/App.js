@@ -12,6 +12,7 @@ import { SwaggerTest } from './components/SwaggerTest';
 
 
 
+
 export default class App extends Component {
 
 
@@ -23,6 +24,7 @@ export default class App extends Component {
 
 
         return (
+        
      
             <Layout>
 
@@ -31,7 +33,8 @@ export default class App extends Component {
             <Route path='/fetchdata' component={FetchData} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
-           <Route path='/Swagger' component={SwaggerTest} />
+                <Route path='/Swagger' component={SwaggerTest} />
+                
       </Layout>
     );
     }

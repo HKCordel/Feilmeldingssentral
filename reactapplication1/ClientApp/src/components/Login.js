@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom"
 
-import { Link } from "react-router-dom";
 
 
 export class Login extends Component {
@@ -18,6 +18,7 @@ export class Login extends Component {
 
     render() {
         return (
+            <div>
             <form onSubmit={this.onSubmit}>
                 <fieldset>
                     <legend>Login</legend>
@@ -41,7 +42,9 @@ export class Login extends Component {
                         Don't have an account? <Link to="/register">Register</Link>
                     </p>
                 </fieldset>
-            </form>
+                </form>
+              
+            </div>
         )
     }
 }
