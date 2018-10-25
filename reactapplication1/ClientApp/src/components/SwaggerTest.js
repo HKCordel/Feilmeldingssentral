@@ -6,55 +6,83 @@ export class SwaggerTest extends Component {
 
     constructor(props) {
         super(props);
-        this.onChangeHostName = this.onChangeHostName.bind(this);
-        this.onChangePort = this.onChangePort.bind(this);
+        this.onAddUserame = this.onAddUserame.bind(this);
+        this.onAddPassword = this.onAddPassword.bind(this);
+        this.onAddEmail = this.onAddEmail.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             name: '',
-            port: ''
+            password: '',
+            email: '',
+            user_level: '0'
+
         }
     }
-    onChangeHostName(e) {
+    onAddUserame(e) {
         this.setState({
             name: e.target.value
         });
     }
-    onChangePort(e) {
+    onAddPassword(e) {
         this.setState({
-            port: e.target.value
+            password: e.target.value
+        });
+    }
+    onAddEmail(e) {
+        this.setState({
+            email: e.target.value
         });
     }
     onSubmit(e) {
         e.preventDefault();
-        const serverport = {
+        var serverport = {
             name: this.state.name,
-            port: this.state.port
+            password: this.state.password,
+            email: this.state.email,
+            user_level: '0'
         }
+        fetch("http://192.168.2.8:3000/user_table/", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(serverport)
+        })
+            .then(function (response) {
+                return response.json();
+            
+            }).then(res => console.log(res.serverport));
         // axios.post(' http://192.168.2.8:3000/user_table/', serverport)
-            .then(res => console.log(res.data));
+            
 
         this.setState({
             name: '',
-            port: ''
+            password: '',
+            email: ''
         });
     }
 
     render() {
         return (
             <div style={{ marginTop: 50 }}>
-                <h3>Add New Server</h3>
+                <h3>Add New user</h3>
                 <form>
                     <div className="form-group">
-                        <label>Add Host Name:  </label>
+                        <label>Add username:  </label>
                         <input type="text" className="form-control" />
                     </div>
                     <div className="form-group">
-                        <label>Add Server Port: </label>
-                        <input type="text" className="form-control" />
+                        <label>Add password </label>
+                        <input type="password" className="form-control" />
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Add Node server" className="btn btn-primary" />
+                        <label>Add email:  </label>
+                        <input type="email" className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Add new user" className="btn btn-primary" />
                     </div>
                 </form>
             </div>

@@ -1,12 +1,12 @@
-﻿export function PostData(type, userData) {
+﻿export function PostData() {
 
-    let BaseUrl = 'http://localhost:61266/login';
+    let BaseUrl = 'http://192.168.2.8:3000/';
 
     return new Promise((resolve, reject) => {
 
-        fetch(BaseUrl + type, {
+        fetch(BaseUrl + "error_message", {
             method: 'POST',
-            body: JSON.stringify(userData)
+            body: JSON.stringify(isActive)
         })
             .then((response) => response.json())
             .then((responseJSON) => {
@@ -16,4 +16,11 @@
             reject(error);
             });
     });
+    function createListOfErrors() {
+        fetch(BaseUrl + 'viewAllErrors')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ items: data, loading: false });
+            });
+    }
 }

@@ -1,70 +1,70 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
-export class Home extends Component {
-    displayName = Home.name
+export class ActiveCases extends Component {
+    displayName = ActiveCases.name
 
     constructor(props) {
         super(props);
-        this.state = { users: [], loading: true};
+        this.state = { data: [], loading: true };
     }
-        componentDidMount(){
+    componentDidMount() {
 
-            const url = "http://192.168.2.8:3000";
-            fetch(url + '/user_table', {
-                method: "GET"
-            }).then(response => response.json())
-                .then(data => {
-                    this.setState({ users: data, loading: false });
-                });
-        }
+        const url = "http://192.168.2.8:3000";
+        fetch(url + '/ActiveCases', {
+            method: "GET"
+        }).then(response => response.json())
+            .then(data => {
+                this.setState({ datas : data, loading: false });
+            });
+    }
 
     changState(id) {
-        const index = this.state.users.findIndex(user => {
-            return user.id === id
+        const index = this.state.datas.findIndex(data => {
+            return data.id === id
         })
         console.log("index", index);
     }
-    
+
 
     render() {
-    
-  
+
+
         const columns = [
             {
-                Header: "User ID",
+                Header: "Case ID",
                 accessor: "id",
                 filterable: true,
-                style:{
+                style: {
                     textAlign: "right"
                 },
-                      width: 100,
+                width: 100,
                 maxWidth: 100,
                 minWidth: 100
             },
-       
+
             {
-                Header: "Username",
-                accessor: "user_username",
+                Header: "Error message",
+                accessor: "error_message",
                 sortable: false,
                 style: {
                     textAlign: "right"
                 }
-            
+
             },
             {
-                Header: "Email",
-                accessor: "email",
-                sortable: false,
-                
-            style: {
-                textAlign: "right"
-            }
+                Header: "Customer ID",
+                accessor: "customerid",
+                sortable: true,
+
+                style: {
+                    textAlign: "right"
+                }
             },
             {
-                Header: "User level",
-                accessor: "user_level",
+                Header: "Customer",
+                accessor: "name",
                 filterable: false,
                 style: {
                     textAlign: "right"
@@ -74,10 +74,10 @@ export class Home extends Component {
                 minWidth: 100
             },
             {
-                Header: "Password",
-                accessor: "user_password",
+                Header: "Stacktrace",
+                accessor: "stacktrace",
                 sortable: false,
-                filterable: false,
+                filterable: true,
                 style: {
                     textAlign: "right"
                 }
@@ -90,7 +90,7 @@ export class Home extends Component {
                             onClick={() => {
                                 this.changeState(props.original.id);
                             }}
-                
+
                         >Change</button>
                     )
                 },
@@ -99,24 +99,24 @@ export class Home extends Component {
                 width: 100,
                 maxWidth: 100,
                 minWidth: 100
-                
+
             }
         ]
         return (
-           
+
             <div>
                 <h1>Administrator dashboard </h1>
                 <ReactTable
                     columns={columns}
-                    data={this.state.users}
+                    data={this.state.datas}
                     filterable
                     noDataText={"No users found"}
-                    
+
                 >
                 </ReactTable>
-           
-                
-         
+
+
+
             </div>
         );
     }

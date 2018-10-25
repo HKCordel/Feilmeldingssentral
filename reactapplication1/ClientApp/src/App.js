@@ -7,6 +7,7 @@ import { Counter } from './components/Counter';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { SwaggerTest } from './components/SwaggerTest';
+import { ActiveCases } from './components/ActiveCases';
 
 
 
@@ -29,11 +30,12 @@ export default class App extends Component {
             <Layout>
 
         <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
+                <Route path='/ActiveCases' component={ActiveCases} />
             <Route path='/fetchdata' component={FetchData} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
-                <Route path='/Swagger' component={SwaggerTest} />
+                <Route path='/Swagger' component={SwaggerTest}/>
+                <Route path='/ActiveCases' component={ActiveCases}/>
                 
       </Layout>
     );
