@@ -44,6 +44,12 @@ export class NavMenu extends Component {
                         <Glyphicon glyph='th-list' /> Register
               </NavItem>
                     </LinkContainer>
+                        <LinkContainer to={'/CustomerErrorCount'}>
+                            <NavItem>
+                                <Glyphicon glyph='th-list' /> Customer error count
+              </NavItem>
+                        </LinkContainer>
+
                     <LinkContainer to={'/Swagger'}>
                         <NavItem>
                             <Glyphicon glyph='th-list' /> Swaggertest

@@ -7,6 +7,7 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { SwaggerTest } from './components/SwaggerTest';
 import { ActiveCases } from './components/ActiveCases';
+import { CustomerErrorCount } from './components/CustomerErrorCount';
 
 
 
@@ -33,8 +34,8 @@ export default class App extends Component {
             <Route path='/fetchdata' component={FetchData} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
-                <Route path='/Swagger' component={SwaggerTest}/>
-
+                <Route path='/Swagger' component={SwaggerTest} />
+                <Route path='/CustomerErrorCount' component={CustomerErrorCount}/>
       </Layout>
     );
     }
