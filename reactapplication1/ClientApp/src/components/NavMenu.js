@@ -55,6 +55,17 @@ export class NavMenu extends Component {
                             <Glyphicon glyph='th-list' /> Swaggertest
               </NavItem>
                     </LinkContainer>
+                    <LinkContainer to={'/StacktraceCount'}>
+                        <NavItem>
+                            <Glyphicon glyph='th-list' /> Stacktrace count
+              </NavItem>
+                    </LinkContainer>
+                    
+                <LinkContainer to={'/groupedErrors'}>
+                    <NavItem>
+                        <Glyphicon glyph='th-list' /> Grouped errors
+              </NavItem>
+                </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

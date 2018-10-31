@@ -37,6 +37,10 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\components\Class.cs" />
+    <None Remove="ClientApp\src\components\Counter.js" />
+    <None Remove="ClientApp\src\components\Counter.js" />
+    <None Remove="ClientApp\src\components\FetchData.js" />
+    <None Remove="ClientApp\src\components\FetchData.js" />
     <None Remove="ClientApp\src\components\jsx.jsx" />
     <None Remove="ClientApp\src\components\jsx.jsx" />
     <None Remove="ClientApp\src\components\Register.jsx" />
@@ -50,10 +54,6 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\index.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\components\Views\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
