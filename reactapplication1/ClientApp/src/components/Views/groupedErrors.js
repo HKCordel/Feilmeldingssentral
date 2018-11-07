@@ -2,6 +2,7 @@
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
+
 export class groupedErrors extends Component {
     displayName = groupedErrors.name
 

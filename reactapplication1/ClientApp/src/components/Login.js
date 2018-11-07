@@ -1,6 +1,7 @@
 ﻿import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom"
+import { createBlogPost } from './PostData';
 
 
 
@@ -13,9 +14,8 @@ export class Login extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        console.error("Not implemented!!1");
+        console.log("Not finished yet");
     }
-
     render() {
         return (
             <div>

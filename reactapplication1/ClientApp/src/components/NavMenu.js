@@ -33,17 +33,8 @@ export class NavMenu extends Component {
                 <Glyphicon glyph='th-list' /> Oversikt
               </NavItem>
                     </LinkContainer>
-                    <LinkContainer to={'/login'}>
-                        <NavItem>
-                            <Glyphicon glyph='th-list' /> Login
-              </NavItem>
-                    </LinkContainer>
-                                        
-                <LinkContainer to={'/Register'}>
-                    <NavItem>
-                        <Glyphicon glyph='th-list' /> Register
-              </NavItem>
-                    </LinkContainer>
+                 
+             
                         <LinkContainer to={'/CustomerErrorCount'}>
                             <NavItem>
                                 <Glyphicon glyph='th-list' /> Customer error count
@@ -55,7 +46,7 @@ export class NavMenu extends Component {
                             <Glyphicon glyph='th-list' /> Swaggertest
               </NavItem>
                     </LinkContainer>
-                    <LinkContainer to={'/StacktraceCount'}>
+                    <LinkContainer to={'/stacktraceCount'}>
                         <NavItem>
                             <Glyphicon glyph='th-list' /> Stacktrace count
               </NavItem>
@@ -65,8 +56,18 @@ export class NavMenu extends Component {
                     <NavItem>
                         <Glyphicon glyph='th-list' /> Grouped errors
               </NavItem>
-                </LinkContainer>
+                    </LinkContainer>
+                  
           </Nav>
+            
+            <Nav pullRight>
+                <LinkContainer to="/register">
+                    <NavItem>Signup</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/login">
+                    <NavItem>Login</NavItem>
+                </LinkContainer>
+            </Nav>
         </Navbar.Collapse>
       </Navbar>
     );

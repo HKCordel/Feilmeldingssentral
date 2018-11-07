@@ -37,10 +37,10 @@ export class SwaggerTest extends Component {
     onSubmit(e) {
         e.preventDefault();
         var serverport = {
-            name: this.state.name,
+            username: this.state.user_username,
             password: this.state.password,
             email: this.state.email,
-            user_level: '0'
+     
         }
         fetch("http://192.168.2.8:3000/user_table/", {
             method: "POST",
