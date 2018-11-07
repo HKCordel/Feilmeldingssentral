@@ -19,6 +19,26 @@ export class ActiveCases extends Component {
                 this.setState({ datas : data, loading: false });
             });
     }
+    activeCaseErrorToFalse(id) {
+
+        fetch('http://192.168.2.8:3000/error_message?id=eq.' + id, {
+            method: 'PATCH',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:
+                JSON.stringify({ "isactive": false }),
+
+
+        }).then(res => {
+            console.log(res);
+
+        }).catch(err => {
+            console.log(err)
+        });
+
+    }
 
     changState(id) {
         const index = this.state.datas.findIndex(data => {
@@ -88,7 +108,7 @@ export class ActiveCases extends Component {
                     return (
                         <button style={{ backgroundColor: "red", color: "#fefefe" }}
                             onClick={() => {
-                                this.changeState(props.original.id);
+                                this.activeCaseErrorToFalse(props.original.id);
                             }}
 
                         >Change</button>

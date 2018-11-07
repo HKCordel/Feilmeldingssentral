@@ -25,7 +25,7 @@ export class StacktraceCount extends Component {
             });
     }
     updateIsActive(stacktrace_hash) {
-      
+        
         fetch('http://192.168.2.8:3000/error_message?stacktrace_hash=eq.' + stacktrace_hash, {
             method: 'PATCH',
            
@@ -37,14 +37,14 @@ export class StacktraceCount extends Component {
             
 
         }).then(res => {
-            console.log(res);
+            //console.log(res);
       
              }).catch(err => {
                  console.log(err)
              });
         
     }
-    isActiveByType
+    
  
 
 

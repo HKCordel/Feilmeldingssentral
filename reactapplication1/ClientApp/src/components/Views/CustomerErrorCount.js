@@ -19,8 +19,27 @@ export class CustomerErrorCount extends Component {
                 this.setState({ customers : customer, loading: false });
             });
     }
+    customerErrorsToFalse(id) {
 
-    changState(id) {
+        fetch('http://192.168.2.8:3000/error_message?customerid=eq.' + id, {
+            method: 'PATCH',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:
+                JSON.stringify({ "isactive": true }),
+
+
+        }).then(res => {
+            console.log(res);
+
+        }).catch(err => {
+            console.log(err)
+        });
+
+    }
+    customerError(id) {
         const index = this.state.customers.findIndex(customer => {
             return customer.id === id
         })
@@ -72,7 +91,7 @@ export class CustomerErrorCount extends Component {
                     return (
                         <button style={{ backgroundColor: "red", color: "#fefefe" }}
                             onClick={() => {
-                                this.changeState(props.original.id);
+                                this.customerErrorsToFalse(props.original.id);
                             }}
 
                         >Change</button>
