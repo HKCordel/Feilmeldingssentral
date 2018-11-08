@@ -114,6 +114,15 @@ export class groupedErrors extends Component {
                     data={this.state.errors}
                     filterable
                     noDataText={"No users found"}
+                    SubComponent={row => {
+                        return (<div>
+                            <h1>Error type</h1>
+                            <span className="class-for-description">{row.row.name}</span>
+                            <h1> Stacktrace</h1>
+                            <span className="class-for-description">{row.row.stacktrace}</span>
+                        </div>
+                        );
+                    }}
 
                 >
                 </ReactTable>

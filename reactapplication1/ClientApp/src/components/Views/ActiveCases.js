@@ -131,6 +131,15 @@ export class ActiveCases extends Component {
                     data={this.state.datas}
                     filterable
                     noDataText={"No users found"}
+                    SubComponent={row => {
+                        return (<div>
+                            <h1>Error message</h1>
+                            <span className="class-for-description">{row.row.error_message}</span>
+                            <h1> Stacktrace</h1>
+                            <span className="class-for-description">{row.row.stacktrace}</span>
+                        </div>
+                        );
+                    }}
 
                 >
                 </ReactTable>

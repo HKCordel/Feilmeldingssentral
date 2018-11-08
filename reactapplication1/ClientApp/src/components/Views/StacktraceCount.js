@@ -9,7 +9,7 @@ export class StacktraceCount extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            expanded: {}, stacktrace: [], loading: true
+            expanded: {}, stacktrace: [], loading: true, selected: null
         };
        
     } 
@@ -24,6 +24,7 @@ export class StacktraceCount extends Component {
                 this.setState({ stacktraces: stacktrace, loading: false });
             });
     }
+
     updateIsActive(stacktrace_hash) {
         
         fetch('http://192.168.2.8:3000/error_message?stacktrace_hash=eq.' + stacktrace_hash, {
@@ -130,21 +131,15 @@ export class StacktraceCount extends Component {
                     data={this.state.stacktraces}
                     filterable
                     noDataText={"No data found"}
-                    pivotBy={["stacktrace"]}
-                    expanded={this.state.expanded}
-                    onExpandedChange={(newExpanded, index, event) => {
-                        if (newExpanded[index[0]] === false) {
-                            newExpanded = {}
-                        } else {
-                            Object.keys(newExpanded).map(k => {
-                                newExpanded[k] = parseInt(k) === index[0] ? {} : false
-                            })
-                        }
-                        this.setState({
-                            ...this.state,
-                            expanded: newExpanded
-                        })
-                    }}                 
+              
+                    SubComponent={row => {
+                        return (<div>
+                            <span className="class-for-name">{row.row.stacktrace}</span>
+                            <span className="class-for-description">{row.row.hash}</span>
+                        </div>
+                            );
+                    }}
+                               
                 >
                 </ReactTable>
 
