@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-
+//import Chart from './Chart';
 
 export class groupedErrors extends Component {
     displayName = groupedErrors.name
@@ -48,7 +48,9 @@ export class groupedErrors extends Component {
             {
                 Header: "Stacktrace type",
                 accessor: "name",
-                sortable: false,
+                sortable: true,
+                filterable: true,
+                
                 style: {
                     textAlign: "right"
                 }
@@ -109,6 +111,7 @@ export class groupedErrors extends Component {
 
             <div>
                 <h1>Error count overview </h1>
+             
                 <ReactTable
                     columns={columns}
                     data={this.state.errors}
