@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import matchSorter from 'match-sorter'
 
 export class CustomerErrorCount extends Component {
     displayName = CustomerErrorCount.name
@@ -28,7 +29,7 @@ export class CustomerErrorCount extends Component {
                 'Content-Type': 'application/json'
             },
             body:
-                JSON.stringify({ "isactive": true }),
+                JSON.stringify({ "isactive": false }),
 
 
         }).then(res => {
@@ -67,6 +68,9 @@ export class CustomerErrorCount extends Component {
                 Header: "Customer name",
                 accessor: "name",
                 sortable: false,
+                filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["name"] }),
+                filterAll: true,
                 style: {
                     textAlign: "right"
                 }

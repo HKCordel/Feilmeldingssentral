@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
+import ReactSvgPieChart from "react-svg-piechart"
 
 export class FetchData extends Component {
   displayName = FetchData.name
@@ -49,6 +50,7 @@ export class FetchData extends Component {
               <td>{item.version}</td>
               <td>{item.name}</td>
                         <td>{item.id}</td>
+
                         <td>              
                         </td>
   
@@ -77,6 +79,8 @@ onChange = e => {
 
     return (
         <div>
+            <ReactSvgPieChart
+                data={this.state.items} />
             <Checkbox
                 checked={this.state.checkedA}
                 onChange={this.handleChange('checkedA')}

@@ -1,6 +1,9 @@
 ﻿import React, { Component } from 'react';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import matchSorter from 'match-sorter'
+import ReactSvgPieChart from "react-svg-piechart"
+
 
 
 export class StacktraceCount extends Component {
@@ -77,6 +80,9 @@ export class StacktraceCount extends Component {
             {
                 Header: "Stacktrace",
                 accessor: "stacktrace",
+                filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["name"] }),
+                filterAll: true,
                 sortable: false,
                 style: {
                     textAlign: "right",
@@ -125,6 +131,8 @@ export class StacktraceCount extends Component {
         return (
 
             <div>
+                <ReactSvgPieChart
+                    data={this.state.stacktraces} />
                 <h1>Stacktrace count </h1>
                 <ReactTable
                     columns={columns}

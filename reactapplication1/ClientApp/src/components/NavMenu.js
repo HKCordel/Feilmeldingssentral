@@ -28,13 +28,6 @@ export class NavMenu extends Component {
                 <Glyphicon glyph='education' /> Active cases
               </NavItem>
             </LinkContainer>
-            <LinkContainer to={'/fetchdata'}>
-              <NavItem>
-                <Glyphicon glyph='th-list' /> Oversikt
-              </NavItem>
-                    </LinkContainer>
-                 
-             
                         <LinkContainer to={'/CustomerErrorCount'}>
                             <NavItem>
                                 <Glyphicon glyph='th-list' /> Customer error count
@@ -57,6 +50,22 @@ export class NavMenu extends Component {
                         <Glyphicon glyph='th-list' /> Grouped errors
               </NavItem>
                     </LinkContainer>
+                    <LinkContainer to={'/viewAllErrors'}>
+                        <NavItem>
+                            <Glyphicon glyph='th-list' /> Feilmeldinger
+              </NavItem>
+                    </LinkContainer>
+                    <LinkContainer to={'/errorPrType'}>
+                        <NavItem>
+                            <Glyphicon glyph='th-list' /> Antall errors pr type
+              </NavItem>
+                    </LinkContainer>
+                    <LinkContainer to={'/chart'}>
+                        <NavItem>
+                            <Glyphicon glyph='th-list' /> chart-test
+              </NavItem>
+                    </LinkContainer>
+
                   
           </Nav>
             

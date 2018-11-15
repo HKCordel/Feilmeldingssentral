@@ -2,29 +2,48 @@
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import matchSorter from 'match-sorter'
-//import Chart from './Chart';
 
-export class groupedErrors extends Component {
-    displayName = groupedErrors.name
+export class viewAllErrors extends Component {
+    displayName = viewAllErrors.name
 
     constructor(props) {
         super(props);
-        this.state = { errors: [], loading: true };
+        this.state = { item: [], loading: true };
     }
     componentDidMount() {
 
         const url = "http://192.168.2.8:3000";
-        fetch(url + '/groupederrors', {
+        fetch(url + '/viewAllErrors', {
             method: "GET"
         }).then(response => response.json())
-            .then(error => {
-                this.setState({ errors: error, loading: false });
+            .then(item => {
+                this.setState({ items: item, loading: false });
             });
     }
+    activeCaseErrorToFalse(id) {
 
-    changState(count) {
-        const index = this.state.errors.findIndex(error => {
-            return error.count === count
+        fetch('http://192.168.2.8:3000/error_message?id=eq.' + id, {
+            method: 'PATCH',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:
+                JSON.stringify({ "isactive": false }),
+
+
+        }).then(res => {
+            console.log(res);
+
+        }).catch(err => {
+            console.log(err)
+        });
+
+    }
+
+    changState(id) {
+        const index = this.state.datas.findIndex(item => {
+            return item.id === id
         })
         console.log("index", index);
     }
@@ -35,8 +54,8 @@ export class groupedErrors extends Component {
 
         const columns = [
             {
-                Header: "Count",
-                accessor: "count",
+                Header: "Case ID",
+                accessor: "id",
                 filterable: true,
                 style: {
                     textAlign: "right"
@@ -47,62 +66,56 @@ export class groupedErrors extends Component {
             },
 
             {
-                Header: "Stacktrace type",
-                accessor: "name",
+                Header: "Kunde",
+                accessor: "customer",
                 sortable: true,
-                filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["name"] }),
-                filterAll: true,
-                
+                filterable: true,
                 style: {
                     textAlign: "right"
                 }
 
             },
             {
-                Header: "Error message",
+                Header: "Produkt",
+                accessor: "product",
+                sortable: true,
+                filterable: true,
+                style: {
+                    textAlign: "right"
+                }
+            },
+            {
+                Header: "Stacktrace",
+                accessor: "name",
+                filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["name"] }),
+                filterAll: true,
+                sortable: true,
+                style: {
+                    textAlign: "right"
+                },
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
+            {
+                Header: "Feilmelding",
                 accessor: "error_message",
-                sortable: false,
+                sortable: true,
                 filterMethod: (filter, rows) =>
                     matchSorter(rows, filter.value.toLowerCase(), { keys: ["error_message"] }),
                 filterAll: true,
                 style: {
                     textAlign: "right"
                 }
-
             },
-            {
-                Header: "Stacktrace",
-                accessor: "stacktrace",
-                filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["stacktrace"] }),
-                filterAll: true,
-                sortable: false,
-                style: {
-                    textAlign: "right"
-                }
-
-            },
-
-            {
-                Header: "Stacktrace hash",
-                accessor: "stacktrace_hash",
-                filterable: false,
-                style: {
-                    textAlign: "right"
-                },
-                width: 200,
-                maxWidth: 200,
-                minWidth: 200
-            },
-
             {
                 Header: "Actions",
                 Cell: props => {
                     return (
                         <button style={{ backgroundColor: "red", color: "#fefefe" }}
                             onClick={() => {
-                                this.changeState(props.original.hash);
+                                this.activeCaseErrorToFalse(props.original.id);
                             }}
 
                         >Change</button>
@@ -119,19 +132,19 @@ export class groupedErrors extends Component {
         return (
 
             <div>
-                <h1>Error count overview </h1>
-             
+                <h1> Oversikt over alle feilmeldingene</h1>
                 <ReactTable
                     columns={columns}
-                    data={this.state.errors}
+                    data={this.state.items}
                     filterable
                     noDataText={"No users found"}
                     SubComponent={row => {
                         return (<div>
-                            <h1>Error type</h1>
-                            <span className="class-for-description">{row.row.name}</span>
+                            <h1>Feilmelding</h1>
+                            <span className="class-for-description">{row.row.error_message}</span>
                             <h1> Stacktrace</h1>
-                            <span className="class-for-description">{row.row.stacktrace}</span>
+                            <span className="class-for-description">{row.row.name}</span>
+                            
                         </div>
                         );
                     }}
