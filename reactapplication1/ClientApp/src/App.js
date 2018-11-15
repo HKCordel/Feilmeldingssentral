@@ -25,29 +25,29 @@ export default class App extends Component {
 
     displayName = App.name
 
- 
+
 
     render() {
 
 
         return (
-        
-     
+
+
             <Layout>
 
-        <Route exact path='/' component={Home} />
+                <Route exact path='/' component={Home} />
                 <Route path='/activecases' component={ActiveCases} />
                 <Route path='/fetchdata' component={FetchData} />
                 <Route path='/viewAllErrors' component={viewAllErrors} />
-            <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
+                <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
                 <Route path='/Swagger' component={SwaggerTest} />
                 <Route path='/CustomerErrorCount' component={CustomerErrorCount} />
                 <Route path='/stacktraceCount' component={StacktraceCount} />
                 <Route path='/groupedErrors' component={groupedErrors} />
                 <Route path='/errorPrType' component={errorPrType} />
-                <Route path='/chart' component={Chart} />   
-      </Layout>
-    );
+                <Route path='/chart' component={Chart} />
+            </Layout>
+        );
     }
-    }
+}
