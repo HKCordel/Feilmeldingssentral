@@ -28,7 +28,7 @@ export function updateIsActive() {
 
     
     export function createBlogPost(username, password) {
-        return fetch('http://192.168.2.8:3000/user_table', {
+        fetch('http://192.168.2.8:3000/user_table', {
             method: 'POST',
             mode: 'CORS',
             body: {

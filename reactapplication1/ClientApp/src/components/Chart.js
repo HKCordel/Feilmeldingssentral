@@ -31,8 +31,11 @@ export class Chart extends Component {
     
 
         return (
+            <div>
+                <h1>Cordel feilmeldingssentral oversikt</h1>
             <div style={{
-                height: "400px"
+                    height: "600px",
+                    
             }}>
                 <ResponsivePie
                     data={this.state.error_types}
@@ -50,7 +53,7 @@ export class Chart extends Component {
                     borderWidth={1}
                     borderColor="inherit:darker(0.2)"
                     radialLabelsSkipAngle={10}
-                    radialLabelsTextXOffset={6}
+                    radialLabelsTextXOffset={8}
                     radialLabelsTextColor="#333333"
                     radialLabelsLinkOffset={0}
                     radialLabelsLinkDiagonalLength={16}
@@ -63,7 +66,8 @@ export class Chart extends Component {
                     motionStiffness={90}
                     motionDamping={15}
                 />
-            </div>
+                </div>
+                </div>
         );
     }
 }

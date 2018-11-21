@@ -9,7 +9,15 @@ export class groupedErrors extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { errors: [], loading: true };
+        this.state = { errors: [], loading: true, customersOnType: [], stacktrace_hash:[] };
+
+        fetch("http://192.168.2.8:3000/errorTypeOnCustomer?stacktrace_hash=eq.")
+
+
+            .then(response => response.json())
+            .then(customerOnType => {
+                this.setState({ customersOnType: customerOnType, loading: false });
+            });
     }
     componentDidMount() {
 
@@ -21,7 +29,10 @@ export class groupedErrors extends Component {
                 this.setState({ errors: error, loading: false });
             });
     }
+     
+       
 
+    
     changState(count) {
         const index = this.state.errors.findIndex(error => {
             return error.count === count
@@ -31,8 +42,46 @@ export class groupedErrors extends Component {
 
 
     render() {
+        const customerColumns = [
+            {
+                Header: "Count",
+                accessor: "count",
+                filterable: true,
+                style: {
+                    textAlign: "right"
+                },
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
 
+            {
+                Header: "Customer id",
+                accessor: "id",
+                sortable: true,
+              
 
+                style: {
+                    textAlign: "right"
+                },
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+
+            },
+            {
+                Header: "Customer",
+                accessor: "name",
+                sortable: false,
+                filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["error_message"] }),
+                filterAll: true,
+              
+
+            },
+
+        ]
+        
         const columns = [
             {
                 Header: "Count",
@@ -117,10 +166,11 @@ export class groupedErrors extends Component {
             }
         ]
         return (
-
+            
             <div>
+               
                 <h1>Error count overview </h1>
-             
+              
                 <ReactTable
                     columns={columns}
                     data={this.state.errors}
@@ -132,7 +182,23 @@ export class groupedErrors extends Component {
                             <span className="class-for-description">{row.row.name}</span>
                             <h1> Stacktrace</h1>
                             <span className="class-for-description">{row.row.stacktrace}</span>
+                            <h3> stacktrace_hash </h3>
+                            <span className="Class-for-description"> {row.row.stacktrace_hash}</span>
+                            <h1> Customers </h1>
+                            
+                            
+                            <ReactTable
+
+                                columns={customerColumns}
+                                data={this.state.customersOnType}
+                                filterable
+                                noDataText={"No customers found"}
+
+                            >
+                                </ReactTable>
+                    
                         </div>
+
                         );
                     }}
 

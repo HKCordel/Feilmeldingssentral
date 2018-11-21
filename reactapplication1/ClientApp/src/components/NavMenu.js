@@ -12,17 +12,18 @@ export class NavMenu extends Component {
       <Navbar inverse fixedTop fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to={'/'}>reactapplication1</Link>
+            <Link to={'/'}>Feilmeldingssentral Cordel</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to={'/'} exact>
-              <NavItem>
-                <Glyphicon glyph='home' /> Dashboard
+                    <LinkContainer to={'/chart'}>
+                        <NavItem>
+                            <Glyphicon glyph='th-list' /> Dashboard
               </NavItem>
-            </LinkContainer>
+                    </LinkContainer>
+
             <LinkContainer to={'/activecases'}>
               <NavItem>
                 <Glyphicon glyph='education' /> Active cases
@@ -33,15 +34,9 @@ export class NavMenu extends Component {
                                 <Glyphicon glyph='th-list' /> Customer error count
               </NavItem>
                         </LinkContainer>
-
-                    <LinkContainer to={'/Swagger'}>
-                        <NavItem>
-                            <Glyphicon glyph='th-list' /> Swaggertest
-              </NavItem>
-                    </LinkContainer>
                     <LinkContainer to={'/stacktraceCount'}>
                         <NavItem>
-                            <Glyphicon glyph='th-list' /> Stacktrace count
+                            <Glyphicon glyph='th-list' /> Stacktrace antall
               </NavItem>
                     </LinkContainer>
                     
@@ -60,11 +55,7 @@ export class NavMenu extends Component {
                             <Glyphicon glyph='th-list' /> Antall errors pr type
               </NavItem>
                     </LinkContainer>
-                    <LinkContainer to={'/chart'}>
-                        <NavItem>
-                            <Glyphicon glyph='th-list' /> chart-test
-              </NavItem>
-                    </LinkContainer>
+                    
 
                   
           </Nav>

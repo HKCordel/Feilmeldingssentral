@@ -57,7 +57,7 @@ export class CustomerErrorCount extends Component {
                 accessor: "id",
                 filterable: true,
                 style: {
-                    textAlign: "right"
+                    textAlign: "center"
                 },
                 width: 100,
                 maxWidth: 100,
@@ -65,24 +65,24 @@ export class CustomerErrorCount extends Component {
             },
 
             {
-                Header: "Customer name",
+                Header: "Kundenavn",
                 accessor: "name",
                 sortable: false,
                 filterMethod: (filter, rows) =>
                     matchSorter(rows, filter.value.toLowerCase(), { keys: ["name"] }),
                 filterAll: true,
                 style: {
-                    textAlign: "right"
+                    textAlign: "center"
                 }
 
             },
 
             {
-                Header: "Count",
+                Header: "Antall feil",
                 accessor: "count",
                 filterable: false,
                 style: {
-                    textAlign: "right"
+                    textAlign: "center"
                 },
                 width: 100,
                 maxWidth: 100,
@@ -90,7 +90,7 @@ export class CustomerErrorCount extends Component {
             },
 
             {
-                Header: "Actions",
+                Header: "Håndtering",
                 Cell: props => {
                     return (
                         <button style={{ backgroundColor: "red", color: "#fefefe" }}
@@ -98,9 +98,12 @@ export class CustomerErrorCount extends Component {
                                 this.customerErrorsToFalse(props.original.id);
                             }}
 
-                        >Change</button>
+                        >Ferdig</button>
                     )
                 },
+                style: {
+                    textAlign: "center"
+                },  
                 sortable: false,
                 filterable: false,
                 width: 100,

@@ -114,33 +114,8 @@ export class errorPrType extends Component {
            
 
                 <h1> Oversikt over alle feilmeldingene</h1>
-                <div className="piechart" >
-                    <div style={{
-                        padding: "10px 20px", textAlign: "right"
-                    }}>
-
-
-
-                        <PieChart
-                            
-                            size={80}
-                            labels
-                            data={[
-                                { key: 'A', value: 30, color: '#aaac84' },
-                                { key: 'B', value: 20, color: '#dce7c5' },
-                                { key: 'C', value: 50, color: '#e3a51a' }
-                            ]}
-                            clickHandler={
-                                (d) => this.setState({
-                                    dataDisplay: `The value of ${d.data.key} is ${d.value}`
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        {this.state.dataDisplay ? this.state.dataDisplay : 'Klikk på segmentet for å se verdien'}
-                    </div>
-                </div>
+                
+                
                 <ReactTable
                     columns={columns}
                     data={this.state.error_types}
