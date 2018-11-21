@@ -28,20 +28,7 @@ export class Chart extends Component {
         // otherwise height will be 0 and no chart will be rendered.
         // website examples showcase many properties, you'll often use just a few of them.
     render() {
-        var values = [
-            {
-                "id": "rust",
-                //"label": "rust",
-                "value": 428,
-                //"color": "hsl(155, 70%, 50%)"
-            },
-            {
-                "id": "php",
-                //"label": "php",
-                "value": 176,
-                //"color": "hsl(22, 70%, 50%)"
-            }
-        ];
+    
 
         return (
             <div style={{
