@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import matchSorter from 'match-sorter'
 
 export class ActiveCases extends Component {
     displayName = ActiveCases.name
@@ -8,11 +9,12 @@ export class ActiveCases extends Component {
     constructor(props) {
         super(props);
         this.state = { data: [], loading: true };
+        this.url = "http://192.168.2.8:3000";
     }
     componentDidMount() {
 
-        const url = "http://192.168.2.8:3000";
-        fetch(url + '/ActiveCases', {
+      
+        fetch(this.url + '/ActiveCases', {
             method: "GET"
         }).then(response => response.json())
             .then(data => {
@@ -21,7 +23,7 @@ export class ActiveCases extends Component {
     }
     activeCaseErrorToFalse(id) {
 
-        fetch('http://192.168.2.8:3000/error_message?id=eq.' + id, {
+        fetch(this.url + '/error_message?id=eq.' + id, {
             method: 'PATCH',
 
             headers: {
@@ -68,6 +70,9 @@ export class ActiveCases extends Component {
                 Header: "Error message",
                 accessor: "error_message",
                 sortable: false,
+                filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["error_message"] }),
+                filterAll: true,
                 style: {
                     textAlign: "right"
                 }
@@ -80,24 +85,30 @@ export class ActiveCases extends Component {
 
                 style: {
                     textAlign: "right"
-                }
-            },
-            {
-                Header: "Customer",
-                accessor: "name",
-                filterable: false,
-                style: {
-                    textAlign: "right"
                 },
                 width: 100,
                 maxWidth: 100,
                 minWidth: 100
             },
             {
+                Header: "Customer",
+                accessor: "name",
+                filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["name"] }),
+                filterAll: true,
+                style: {
+                    textAlign: "right"
+                },
+              
+            },
+            {
                 Header: "Stacktrace",
                 accessor: "stacktrace",
+                filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value.toLowerCase(), { keys: ["stacktrace"] }),
+                filterAll: true,
                 sortable: false,
-                filterable: true,
+               
                 style: {
                     textAlign: "right"
                 }

@@ -14,13 +14,14 @@ export class StacktraceCount extends Component {
         this.state = {
             expanded: {}, stacktrace: [], loading: true, selected: null
         };
+        this.url = "http://192.168.2.8:3000";
        
     } 
   
     componentDidMount() {
 
       
-        fetch('http://192.168.2.8:3000' + '/stactraceCount', {
+        fetch(this.url + '/stactraceCount', {
             method: "GET"
         }).then(response => response.json())
             .then(stacktrace => {
@@ -30,7 +31,7 @@ export class StacktraceCount extends Component {
 
     updateIsActive(stacktrace_hash) {
         
-        fetch('http://192.168.2.8:3000/error_message?stacktrace_hash=eq.' + stacktrace_hash, {
+        fetch(this.url + '/error_message?stacktrace_hash=eq.' + stacktrace_hash, {
             method: 'PATCH',
            
             headers: {

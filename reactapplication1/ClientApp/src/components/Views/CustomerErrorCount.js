@@ -8,12 +8,13 @@ export class CustomerErrorCount extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { customer : [], loading: true };
+        this.state = { customer: [], loading: true };
+        this.url = "http://192.168.2.8:3000";
     }
     componentDidMount() {
 
-        const url = "http://192.168.2.8:3000";
-        fetch(url + '/customerErrorCount', {
+        
+        fetch(this.url + '/customerErrorCount', {
             method: "GET"
         }).then(response => response.json())
             .then(customer => {
@@ -22,7 +23,7 @@ export class CustomerErrorCount extends Component {
     }
     customerErrorsToFalse(id) {
 
-        fetch('http://192.168.2.8:3000/error_message?customerid=eq.' + id, {
+        fetch(this.url + '/error_message?customerid=eq.' + id, {
             method: 'PATCH',
 
             headers: {

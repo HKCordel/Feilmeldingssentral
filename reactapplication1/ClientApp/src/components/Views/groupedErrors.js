@@ -1,7 +1,8 @@
-﻿import React, { Component } from 'react';
+﻿import matchSorter from 'match-sorter';
+import React, { Component } from 'react';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import matchSorter from 'match-sorter'
+import DetailComp from "../detailComp";
 //import Chart from './Chart';
 
 export class groupedErrors extends Component {
@@ -9,25 +10,22 @@ export class groupedErrors extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { errors: [], loading: true, customersOnType: [], stacktrace_hash:[] };
+        this.state = { errors: [], loading: true, customersOnType: [], stacktrace_hash: [] };
+        this.url = "http://192.168.2.8:3000";
+        
 
-        fetch("http://192.168.2.8:3000/errorTypeOnCustomer?stacktrace_hash=eq.")
-
-
-            .then(response => response.json())
-            .then(customerOnType => {
-                this.setState({ customersOnType: customerOnType, loading: false });
-            });
+       
     }
-    componentDidMount() {
+    async componentDidMount() {
 
-        const url = "http://192.168.2.8:3000";
-        fetch(url + '/groupederrors', {
+
+         
+        const response = await fetch(this.url + '/groupederrors', {
             method: "GET"
-        }).then(response => response.json())
-            .then(error => {
-                this.setState({ errors: error, loading: false });
-            });
+        })
+        const json = await response.json()
+        this.setState({ errors: json, loading: false });
+           
     }
      
        
@@ -177,28 +175,10 @@ export class groupedErrors extends Component {
                     filterable
                     noDataText={"No users found"}
                     SubComponent={row => {
-                        return (<div>
-                            <h1>Error type</h1>
-                            <span className="class-for-description">{row.row.name}</span>
-                            <h1> Stacktrace</h1>
-                            <span className="class-for-description">{row.row.stacktrace}</span>
-                            <h3> stacktrace_hash </h3>
-                            <span className="Class-for-description"> {row.row.stacktrace_hash}</span>
-                            <h1> Customers </h1>
-                            
-                            
-                            <ReactTable
-
-                                columns={customerColumns}
-                                data={this.state.customersOnType}
-                                filterable
-                                noDataText={"No customers found"}
-
-                            >
-                                </ReactTable>
-                    
-                        </div>
-
+                        return (
+                            <DetailComp row={row}
+                                stacktrace_hash={row.row.stacktrace_hash}
+                                customerColumns={customerColumns} />
                         );
                     }}
 

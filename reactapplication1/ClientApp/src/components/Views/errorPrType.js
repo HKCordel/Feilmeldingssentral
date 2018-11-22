@@ -2,7 +2,7 @@
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import matchSorter from 'match-sorter'
-import { PieChart } from 'react-easy-chart';
+
 
 
 export class errorPrType extends Component {
@@ -11,11 +11,12 @@ export class errorPrType extends Component {
     constructor(props) {
         super(props);
         this.state = { error_type: [], loading: true };
+        this.url = "http://192.168.2.8:3000";
     }
     componentDidMount() {
 
-        const url = "http://192.168.2.8:3000";
-        fetch(url + '/AntallFeilPrType', {
+        
+        fetch(this.url + '/AntallFeilPrType', {
             method: "GET"
         }).then(response => response.json())
             .then(error_type => {
@@ -24,7 +25,7 @@ export class errorPrType extends Component {
     }
     activeCaseErrorToFalse(stacktrace) {
 
-        fetch('http://192.168.2.8:3000/error_message?id=eq.' + stacktrace, {
+        fetch(this.url + '/error_message?id=eq.' + stacktrace, {
             method: 'PATCH',
 
             headers: {

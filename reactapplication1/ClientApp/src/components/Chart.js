@@ -7,17 +7,18 @@ export class Chart extends Component {
     constructor(props) {
         super(props);
         this.state = { error_types: [], loading: true };
+        this.url = "http://192.168.2.8:3000";
     }
 
     componentDidMount() {
 
-        const url = "http://192.168.2.8:3000";
+       // const url = "http://192.168.2.8:3000";
         //fetch(url + '/AntallFeilPrType?select=id:name,value:antall', {
         //    method: "GET"
         //}).then(response => this.setState({ error_types: error_type, loading: false }));
 
 
-        fetch(url + '/AntallFeilPrType?select=id:name,value:antall', {
+        fetch(this.url + '/AntallFeilPrType?select=id:name,value:antall', {
             method: "GET"
         }).then(response => response.json())
             .then(error_type => {
@@ -65,6 +66,7 @@ export class Chart extends Component {
                     animate={true}
                     motionStiffness={90}
                     motionDamping={15}
+                        
                 />
                 </div>
                 </div>
