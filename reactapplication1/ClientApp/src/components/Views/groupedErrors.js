@@ -152,7 +152,7 @@ export class groupedErrors extends Component {
                                 this.changeState(props.original.hash);
                             }}
 
-                        >Change</button>
+                        >Done</button>
                     )
                 },
                 sortable: false,

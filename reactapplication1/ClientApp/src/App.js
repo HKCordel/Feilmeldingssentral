@@ -5,7 +5,7 @@ import { Home } from './components/Home';
 import { FetchData } from './components/Views/FetchData';
 import { Login } from './components/Authorization/Login';
 import { Register } from './components/Authorization/Register';
-import { SwaggerTest } from './components/SwaggerTest';
+
 import { ActiveCases } from './components/Views/ActiveCases';
 import { CustomerErrorCount } from './components/Views/CustomerErrorCount';
 import { StacktraceCount } from './components/Views/StacktraceCount';
@@ -41,7 +41,7 @@ export default class App extends Component {
                 <Route path='/viewAllErrors' component={viewAllErrors} />
                 <Route path='/login' component={Login} />
                 <Route path='/register' component={Register} />
-                <Route path='/Swagger' component={SwaggerTest} />
+              
                 <Route path='/CustomerErrorCount' component={CustomerErrorCount} />
                 <Route path='/stacktraceCount' component={StacktraceCount} />
                 <Route path='/groupedErrors' component={groupedErrors} />

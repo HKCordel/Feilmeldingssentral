@@ -122,7 +122,7 @@ export class ActiveCases extends Component {
                                 this.activeCaseErrorToFalse(props.original.id);
                             }}
 
-                        >Change</button>
+                        >Done</button>
                     )
                 },
                 sortable: false,
@@ -136,7 +136,7 @@ export class ActiveCases extends Component {
         return (
 
             <div>
-                <h1>Administrator dashboard </h1>
+                <h1>Active cases </h1>
                 <ReactTable
                     columns={columns}
                     data={this.state.datas}

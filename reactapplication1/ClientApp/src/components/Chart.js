@@ -33,7 +33,7 @@ export class Chart extends Component {
 
         return (
             <div>
-                <h1>Cordel feilmeldingssentral oversikt</h1>
+                <h1>Cordel feilmeldingssentral </h1>
             <div style={{
                     height: "600px",
                     

@@ -18,17 +18,21 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\src\components\login\**" />
     <Compile Remove="ClientApp\src\components\NewFolder1\**" />
+    <Compile Remove="ClientApp\src\reducers\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\src\components\login\**" />
     <Content Remove="ClientApp\src\components\NewFolder1\**" />
+    <Content Remove="ClientApp\src\reducers\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="ClientApp\src\components\login\**" />
     <EmbeddedResource Remove="ClientApp\src\components\NewFolder1\**" />
+    <EmbeddedResource Remove="ClientApp\src\reducers\**" />
     <None Remove="ClientApp\src\components\login\**" />
     <None Remove="ClientApp\src\components\NewFolder1\**" />
+    <None Remove="ClientApp\src\reducers\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +43,12 @@
     <None Remove="ClientApp\src\components\Class.cs" />
     <None Remove="ClientApp\src\components\Counter.js" />
     <None Remove="ClientApp\src\components\Counter.js" />
+    <None Remove="ClientApp\src\components\CustomLayout.js" />
+    <None Remove="ClientApp\src\components\CustomLayout.js" />
+    <None Remove="ClientApp\src\components\CustomWrapLayout.js" />
+    <None Remove="ClientApp\src\components\CustomWrapLayout.js" />
+    <None Remove="ClientApp\src\components\EnhancedTable.js" />
+    <None Remove="ClientApp\src\components\EnhancedTable.js" />
     <None Remove="ClientApp\src\components\FetchData.js" />
     <None Remove="ClientApp\src\components\FetchData.js" />
     <None Remove="ClientApp\src\components\jsx.jsx" />
@@ -47,13 +57,11 @@
     <None Remove="ClientApp\src\components\Register.jsx" />
     <None Remove="ClientApp\src\CustomLayoutjs.js" />
     <None Remove="ClientApp\src\CustomLayoutjs.js" />
+    <None Remove="ClientApp\src\index.js" />
+    <None Remove="ClientApp\src\index.js" />
     <None Remove="ClientApp\src\index.ts" />
     <None Remove="ClientApp\src\StyleSheet.css" />
     <None Remove="ClientApp\src\StyleSheet.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\index.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

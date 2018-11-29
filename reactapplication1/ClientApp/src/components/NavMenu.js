@@ -20,13 +20,13 @@ export class NavMenu extends Component {
           <Nav>
                     <LinkContainer to={'/chart'}>
                         <NavItem>
-                            <Glyphicon glyph='th-list' /> Dashboard
+                            <Glyphicon glyph='stats' /> Dashboard
               </NavItem>
                     </LinkContainer>
 
             <LinkContainer to={'/activecases'}>
               <NavItem>
-                <Glyphicon glyph='education' /> Active cases
+                <Glyphicon glyph='th-list' /> Active cases
               </NavItem>
             </LinkContainer>
                         <LinkContainer to={'/CustomerErrorCount'}>
@@ -36,7 +36,7 @@ export class NavMenu extends Component {
                         </LinkContainer>
                     <LinkContainer to={'/stacktraceCount'}>
                         <NavItem>
-                            <Glyphicon glyph='th-list' /> Stacktrace antall
+                            <Glyphicon glyph='th-list' /> Stacktrace count
               </NavItem>
                     </LinkContainer>
                     
@@ -47,12 +47,12 @@ export class NavMenu extends Component {
                     </LinkContainer>
                     <LinkContainer to={'/viewAllErrors'}>
                         <NavItem>
-                            <Glyphicon glyph='th-list' /> Feilmeldinger
+                            <Glyphicon glyph='th-list' /> Error messages
               </NavItem>
                     </LinkContainer>
                     <LinkContainer to={'/errorPrType'}>
                         <NavItem>
-                            <Glyphicon glyph='th-list' /> Antall errors pr type
+                            <Glyphicon glyph='th-list' />  Errors for each type
               </NavItem>
                     </LinkContainer>
                     
