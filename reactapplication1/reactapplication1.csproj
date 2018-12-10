@@ -40,6 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\Authorization\LoginForm.js" />
+    <None Remove="ClientApp\src\components\Authorization\LoginForm.js" />
     <None Remove="ClientApp\src\components\Class.cs" />
     <None Remove="ClientApp\src\components\Counter.js" />
     <None Remove="ClientApp\src\components\Counter.js" />

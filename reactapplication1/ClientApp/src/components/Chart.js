@@ -12,11 +12,7 @@ export class Chart extends Component {
 
     componentDidMount() {
 
-       // const url = "http://192.168.2.8:3000";
-        //fetch(url + '/AntallFeilPrType?select=id:name,value:antall', {
-        //    method: "GET"
-        //}).then(response => this.setState({ error_types: error_type, loading: false }));
-
+    
 
         fetch(this.url + '/AntallFeilPrType?select=id:name,value:antall', {
             method: "GET"

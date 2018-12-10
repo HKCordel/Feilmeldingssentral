@@ -35,7 +35,7 @@ export default class App extends Component {
 
             <Layout>
 
-                <Route exact path='/' component={Home} />
+                <Route exact path='/test' component={Home} />
                 <Route path='/activecases' component={ActiveCases} />
                 <Route path='/fetchdata' component={FetchData} />
                 <Route path='/viewAllErrors' component={viewAllErrors} />
@@ -46,7 +46,7 @@ export default class App extends Component {
                 <Route path='/stacktraceCount' component={StacktraceCount} />
                 <Route path='/groupedErrors' component={groupedErrors} />
                 <Route path='/errorPrType' component={errorPrType} />
-                <Route path='/chart' component={Chart} />
+                <Route path='/Chart' component={Chart} />
             </Layout>
         );
     }

@@ -119,10 +119,12 @@ export class ActiveCases extends Component {
                     return (
                         <button style={{ backgroundColor: "red", color: "#fefefe" }}
                             onClick={() => {
-                                this.activeCaseErrorToFalse(props.original.id);
+                                if (window.confirm("Er du sikker på at du vil avslutte saken?")) {
+                                    this.activeCaseErrorToFalse(props.original.id);
+                                }
                             }}
 
-                        >Done</button>
+                        >Done   </button>
                     )
                 },
                 sortable: false,

@@ -13,9 +13,8 @@ export default class Login extends Component {
                     Login
         </button>
 
-                {errorMessage &&
-                    <p style=> {errorMessage}</p>
-        }
+               
+        
       </div>
     )
   }
