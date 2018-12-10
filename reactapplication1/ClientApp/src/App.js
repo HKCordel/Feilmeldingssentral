@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 
-import { FetchData } from './components/Views/FetchData';
 import { Login } from './components/Authorization/Login';
 import { Register } from './components/Authorization/Register';
 
@@ -37,7 +36,6 @@ export default class App extends Component {
 
               
                 <Route path='/activecases' component={ActiveCases} />
-                <Route path='/fetchdata' component={FetchData} />
                 <Route path='/viewAllErrors' component={viewAllErrors} />
                 <Route path='/login' component={Login} />
                 <Route path='/register' component={Register} />

@@ -2,9 +2,6 @@
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import matchSorter from 'match-sorter'
-import ReactSvgPieChart from "react-svg-piechart"
-
-
 
 export class StacktraceCount extends Component {
     displayName = StacktraceCount.name
@@ -132,8 +129,6 @@ export class StacktraceCount extends Component {
         return (
 
             <div>
-                <ReactSvgPieChart
-                    data={this.state.stacktraces} />
                 <h1>Stacktrace count </h1>
                 <ReactTable
                     columns={columns}
