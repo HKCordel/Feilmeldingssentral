@@ -57,6 +57,8 @@
     <None Remove="ClientApp\src\components\jsx.jsx" />
     <None Remove="ClientApp\src\components\Register.jsx" />
     <None Remove="ClientApp\src\components\Register.jsx" />
+    <None Remove="ClientApp\src\components\Views\FetchData.js" />
+    <None Remove="ClientApp\src\components\Views\FetchData.js" />
     <None Remove="ClientApp\src\CustomLayoutjs.js" />
     <None Remove="ClientApp\src\CustomLayoutjs.js" />
     <None Remove="ClientApp\src\index.js" />

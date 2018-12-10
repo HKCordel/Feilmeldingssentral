@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home';
+
 import { FetchData } from './components/Views/FetchData';
 import { Login } from './components/Authorization/Login';
 import { Register } from './components/Authorization/Register';
@@ -35,7 +35,7 @@ export default class App extends Component {
 
             <Layout>
 
-                <Route exact path='/test' component={Home} />
+              
                 <Route path='/activecases' component={ActiveCases} />
                 <Route path='/fetchdata' component={FetchData} />
                 <Route path='/viewAllErrors' component={viewAllErrors} />
@@ -46,7 +46,7 @@ export default class App extends Component {
                 <Route path='/stacktraceCount' component={StacktraceCount} />
                 <Route path='/groupedErrors' component={groupedErrors} />
                 <Route path='/errorPrType' component={errorPrType} />
-                <Route path='/Chart' component={Chart} />
+                <Route exact path='/Chart' component={Chart} />
             </Layout>
         );
     }
