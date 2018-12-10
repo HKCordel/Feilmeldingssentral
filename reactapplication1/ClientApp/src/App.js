@@ -12,7 +12,7 @@ import { StacktraceCount } from './components/Views/StacktraceCount';
 import { groupedErrors } from './components/Views/groupedErrors';
 import { viewAllErrors } from './components/Views/viewAllErrorsjs';
 import { errorPrType } from './components/Views/errorPrType';
-import { Chart } from './components/Chart';
+import { Chart } from './components/Views/Chart';
 
 
 
