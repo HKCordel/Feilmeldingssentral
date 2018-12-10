@@ -1,0 +1,12 @@
+Docker-image bygges med
+
+    docker build -t feilmeldingssentral .
+
+og kjøres med
+
+    docker run -it -p 3000:3000 -v ${pwd}:/usr/src/app -v /usr/src/app/node_modules --rm feilmeldingssentral
+
+Merk at i dette docker-imaget sendes koden inn via mount når det kjøres i stedet for å kopieres inn når det bygges.
+Fint for utvikling, men ikke slik det har blitt gjort på de andre prosjektene her, og antagelig mindre gunstig for
+deployment.
+
