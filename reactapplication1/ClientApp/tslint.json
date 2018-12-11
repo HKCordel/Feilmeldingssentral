@@ -1,0 +1,17 @@
+{
+  "extends": ["tslint:recommended"],
+  "defaultSeverity": "warning",
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.s",
+      "coverage/lcov-report/*.js"
+    ]
+  },
+  "rules":{
+    "no-string-literal": false,
+    "no-empty": false,
+    "object-literal-sort-keys": false,
+    "one-variable-per-declaration": false
+  }
+}
