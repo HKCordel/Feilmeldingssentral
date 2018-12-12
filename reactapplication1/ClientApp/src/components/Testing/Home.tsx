@@ -4,7 +4,7 @@ import "react-table/react-table.css";
 
 export class Home extends Component<{}, {users: string[][], loading: boolean}> {
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
         this.state = { users: [], loading: true};
     }
@@ -19,8 +19,8 @@ export class Home extends Component<{}, {users: string[][], loading: boolean}> {
                 });
         }
 
-    public changeState(id) {
-        const index = this.state.users.findIndex((user) => {
+    public changeState(id: string) {
+        const index = this.state.users.findIndex((user: any) => {
             return user["id"] === id;
         });
     }
@@ -80,7 +80,7 @@ export class Home extends Component<{}, {users: string[][], loading: boolean}> {
             },
             {
                 Header: "Actions",
-                Cell: (props) => {
+                Cell: (props: any) => {
                     return (
                         <button style={{ backgroundColor: "red", color: "#fefefe" }}
                             onClick={() => {
@@ -108,9 +108,7 @@ export class Home extends Component<{}, {users: string[][], loading: boolean}> {
                     filterable
                     noDataText={"No users found"}
 
-                >
-                </ReactTable>
-
+                />
             </div>
         );
     }

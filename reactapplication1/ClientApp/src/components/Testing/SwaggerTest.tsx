@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 // import axios from 'axios';
 
-export class SwaggerTest extends Component<{},{
+export class SwaggerTest extends Component<{}, {
             username: string,
             password: string,
             email: string,
@@ -9,7 +9,7 @@ export class SwaggerTest extends Component<{},{
 }> {
     public displayName = SwaggerTest.name;
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
         this.onAddUserame = this.onAddUserame.bind(this);
         this.onAddPassword = this.onAddPassword.bind(this);
@@ -24,22 +24,22 @@ export class SwaggerTest extends Component<{},{
 
         };
     }
-    public onAddUserame(e) {
+    public onAddUserame(e: any) {
         this.setState({
             username: e.target.value,
         });
     }
-    public onAddPassword(e) {
+    public onAddPassword(e: any) {
         this.setState({
             password: e.target.value,
         });
     }
-    public onAddEmail(e) {
+    public onAddEmail(e: any) {
         this.setState({
             email: e.target.value,
         });
     }
-    public onSubmit(e) {
+    public onSubmit(e: any) {
         e.preventDefault();
         const serverport = {
             username: this.state.username,
