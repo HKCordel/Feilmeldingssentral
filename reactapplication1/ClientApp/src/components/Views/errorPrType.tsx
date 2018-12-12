@@ -1,78 +1,56 @@
-﻿import React, { Component } from 'react';
+﻿import matchSorter from "match-sorter";
+import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import matchSorter from 'match-sorter'
+import { endpoint } from "../Utils/Common";
 
+export class ErrorPrType extends Component<{}, {
+    errorTypes: string[][],
+    loading: boolean,
+}> {
 
-
-export class errorPrType extends Component {
-    displayName = errorPrType.name
-
-    constructor(props) {
+    constructor(props: any) {
         super(props);
-        this.state = { error_type: [], loading: true };
-        this.url = "http://192.168.2.8:3000";
+        this.state = { errorTypes: [], loading: true };
     }
-    componentDidMount() {
 
-        
-        fetch(this.url + '/AntallFeilPrType', {
-            method: "GET"
-        }).then(response => response.json())
-            .then(error_type => {
-                this.setState({ error_types: error_type, loading: false });
+    public componentDidMount() {
+
+        fetch(endpoint + "/AntallFeilPrType", {
+            method: "GET",
+        }).then((response) => response.json())
+            .then((errorTypes) => {
+                this.setState({ errorTypes, loading: false });
             });
     }
-    activeCaseErrorToFalse(stacktrace) {
-
-        fetch(this.url + '/error_message?id=eq.' + stacktrace, {
-            method: 'PATCH',
-
+    public activeCaseErrorToFalse(stacktrace: string) {
+        fetch(endpoint + "/error_message?id=eq." + stacktrace, {
+            method: "PATCH",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
             body:
-                JSON.stringify({ "isactive": false }),
+                JSON.stringify({ isactive: false }),
 
-
-        }).then(res => {
-            console.log(res);
-
-        }).catch(err => {
-            console.log(err)
+        }).then((res) => {
+        }).catch((err) => {
+            // tslint:disable-next-line:no-console
+            console.error(err);
         });
-
     }
 
-    changState(stacktrace) {
-        const index = this.state.datas.findIndex(error_type => {
-            return error_type.stacktrace === stacktrace
-        })
-        console.log("index", index);
-    }
-
-
-    render() {
-
-
-
+    public render() {
         const columns = [
             {
                 Header: "Stacktrace",
                 accessor: "name",
-                
-                filterMethod: (filter, rows) =>
+                filterMethod: (filter: any, rows: any) =>
                     matchSorter(rows, filter.value.toLowerCase(), { keys: ["name"] }),
                 filterAll: true,
                 style: {
-                    textAlign: "right"
-
-
-
+                    textAlign: "right",
                 },
-
             },
-
             {
                 Header: "Antall",
                 accessor: "antall",
@@ -82,62 +60,46 @@ export class errorPrType extends Component {
                 maxWidth: 100,
                 minWidth: 100,
                 style: {
-                    textAlign: "right"
+                    textAlign: "right",
                 },
-
             },
-            
-        
             {
                 Header: "Actions",
-                Cell: props => {
+                Cell: (props: any) => {
                     return (
                         <button style={{ backgroundColor: "red", color: "#fefefe" }}
                             onClick={() => {
                                 this.activeCaseErrorToFalse(props.original.stacktrace);
                             }}
-
                         >Change</button>
-                    )
+                    );
                 },
                 sortable: false,
                 filterable: false,
                 width: 100,
                 maxWidth: 100,
-                minWidth: 100
-
-            }
-        ]
+                minWidth: 100,
+            },
+        ];
 
         return (
-            
             <div>
-           
-
                 <h1> Oversikt over alle feilmeldingene</h1>
-                
-                
                 <ReactTable
                     columns={columns}
-                    data={this.state.error_types}
+                    data={this.state.errorTypes}
                     filterable
                     noDataText={"No users found"}
-                    SubComponent={row => {
+                    SubComponent={(row) => {
                         return (<div>
                             <h1>Feilmelding</h1>
                             <span className="class-for-description">{row.row.error_message}</span>
                             <h1> Stacktrace</h1>
                             <span className="class-for-description">{row.row.name}</span>
-
                         </div>
                         );
                     }}
-
-                >
-                </ReactTable>
-
-
-
+                />
             </div>
         );
     }

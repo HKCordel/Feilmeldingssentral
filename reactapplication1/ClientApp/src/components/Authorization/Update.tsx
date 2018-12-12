@@ -1,41 +1,49 @@
-﻿import React, { Component } from 'react';
-import { PostData } from './PostData';
+﻿/*
 
-const Update = React.createClass({
+import React, { Component } from "react";
+import {fetchBlogPost, updateBlogPost} from "../Testing/PostData";
 
-    getInitialState() {
-        return {
-            blogPost: {}
-        };
-    },
+export class Update extends Component<{params: any}, {blogPost: any}> {
 
-    componentDidMount() {
-        PostData.fetchBlogPost(this.props.params.postId)
+    constructor(props: any) {
+        super(props);
+        this.state = {blogPost: {}};
+    }
+
+    public componentDidMount() {
+        fetchBlogPost(this.props.params.postId)
             .then((IsActive) => {
-                this.setState(state => {
+                this.setState((state) => {
                     state.blogPost = IsActive;
                     return state;
                 });
             })
             .catch((err) => {
-                console.error('err', err);
+                // tslint:disable-next-line:no-console
+                console.error("err", err);
             });
-    },
+    }
 
-    handleSubmit(data) {
-        updateBlogPost(this.state.blogPost.id, data);
-        this.props.router.push('/');
-    },
-
-    render() {
+    public render() {
         return (
             <div>
-                <Form onSubmit={this.handleSubmit.bind(this)}
+                <form onSubmit={this.handleSubmit.bind(this)}
                     title={this.state.blogPost.title}
-                    body={this.state.blogPost.body}></Form>
+                    body={this.state.blogPost.body}>
+                </form>
             </div>
         );
     }
-});
+    private handleSubmit(data) {
+        updateBlogPost(this.state.blogPost.id, data);
+        this.props.router.push("/");
+    }
+}
 
+export default Update;
+
+*/
+
+// In order to suppress compilation error on empty file
+const Update = {};
 export default Update;

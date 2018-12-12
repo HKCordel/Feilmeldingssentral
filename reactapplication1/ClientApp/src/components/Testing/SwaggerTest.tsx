@@ -1,8 +1,13 @@
-﻿import React, { Component } from 'react';
+﻿import React, { Component } from "react";
 // import axios from 'axios';
 
-export class SwaggerTest extends Component {
-    displayName = SwaggerTest.name
+export class SwaggerTest extends Component<{},{
+            username: string,
+            password: string,
+            email: string,
+            user_level: string,
+}> {
+    public displayName = SwaggerTest.name;
 
     constructor(props) {
         super(props);
@@ -12,59 +17,59 @@ export class SwaggerTest extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            name: '',
-            password: '',
-            email: '',
-            user_level: '0'
+            username: "",
+            password: "",
+            email: "",
+            user_level: "0",
 
-        }
+        };
     }
-    onAddUserame(e) {
+    public onAddUserame(e) {
         this.setState({
-            name: e.target.value
+            username: e.target.value,
         });
     }
-    onAddPassword(e) {
+    public onAddPassword(e) {
         this.setState({
-            password: e.target.value
+            password: e.target.value,
         });
     }
-    onAddEmail(e) {
+    public onAddEmail(e) {
         this.setState({
-            email: e.target.value
+            email: e.target.value,
         });
     }
-    onSubmit(e) {
+    public onSubmit(e) {
         e.preventDefault();
-        var serverport = {
-            username: this.state.user_username,
+        const serverport = {
+            username: this.state.username,
             password: this.state.password,
             email: this.state.email,
-     
-        }
+
+        };
         fetch("http://192.168.2.8:3000/user_table/", {
             method: "POST",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                "Accept": "application/json",
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(serverport)
+            body: JSON.stringify(serverport),
         })
-            .then(function (response) {
+            .then((response) => {
                 return response.json();
-            
-            }).then(res => console.log(res.serverport));
+
+            // tslint:disable-next-line:no-console
+            }).then((res) => console.log(res.serverport));
         // axios.post(' http://192.168.2.8:3000/user_table/', serverport)
-            
 
         this.setState({
-            name: '',
-            password: '',
-            email: ''
+            username: "",
+            password: "",
+            email: "",
         });
     }
 
-    render() {
+    public render() {
         return (
             <div style={{ marginTop: 50 }}>
                 <h3>Add New user</h3>
@@ -86,6 +91,6 @@ export class SwaggerTest extends Component {
                     </div>
                 </form>
             </div>
-        )
+        );
     }
 }

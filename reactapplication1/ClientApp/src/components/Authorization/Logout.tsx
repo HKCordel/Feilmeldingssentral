@@ -1,19 +1,14 @@
-﻿import React, { Component, PropTypes } from 'react'
+﻿import React, { Component } from "react";
 
-export default class Logout extends Component {
+export default class Logout extends Component<{onLogoutClick: (event: any) => any}, {}> {
 
-  render() {
-    const { onLogoutClick } = this.props
+    public render() {
+        const { onLogoutClick } = this.props;
 
-    return (
-      <button onClick={() => onLogoutClick()} className="btn btn-primary">
-        Logout
-      </button>
-    )
-  }
-
-}    
-
-Logout.propTypes = {
-  onLogoutClick: PropTypes.func.isRequired
+        return (
+            <button onClick={onLogoutClick} className="btn btn-primary">
+                Logout
+            </button>
+        );
+    }
 }

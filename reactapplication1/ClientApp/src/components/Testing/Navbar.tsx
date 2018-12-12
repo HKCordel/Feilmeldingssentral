@@ -1,42 +1,42 @@
 ﻿// components/Navbar.js
 
-import React, { Component, PropTypes } from 'react'
-import Login from './Login'
-import Logout from './Logout'
-import { loginUser, logoutUser } from '../actions'
+import React, { Component } from "react";
+// import { loginUser, logoutUser } from "../actions";
+import Login from "../Authorization/LoginForm";
+import Logout from "../Authorization/Logout";
 
-export default class Navbar extends Component {
+export default class Navbar extends Component<{
+            dispatch: (event: any) => any,
+            isAuthenticated: boolean,
+            errorMessage?: string,
+        }, {}> {
 
-    render() {
-        const { dispatch, isAuthenticated, errorMessage } = this.props
+    public render() {
+        const { dispatch, isAuthenticated, errorMessage } = this.props;
 
         return (
-            <nav className='navbar navbar-default'>
-                <div className='container-fluid'>
+            <nav className="navbar navbar-default">
+                <div className="container-fluid">
                     <a className="navbar-brand" href="#">Quotes App</a>
-                    <div className='navbar-form'>
-
+                    <div className="navbar-form">
                         {!isAuthenticated &&
                             <Login
-                                errorMessage={errorMessage}
-                                onLoginClick={creds => dispatch(loginUser(creds))}
+                                onLoginClick={(creds) => dispatch(
+                                            // loginUser(creds)
+                                            "?", // Could not find file where this was implemented
+                                        )}
                             />
                         }
-
                         {isAuthenticated &&
-                            <Logout onLogoutClick={() => dispatch(logoutUser())} />
+                            <Logout onLogoutClick={() => dispatch(
+                                            // logoutUser()
+                                            "?", // Could not find file where this was implemented
+                                        )}
+                            />
                         }
-
                     </div>
                 </div>
             </nav>
-        )
+        );
     }
-
-}
-
-Navbar.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    errorMessage: PropTypes.string
 }
